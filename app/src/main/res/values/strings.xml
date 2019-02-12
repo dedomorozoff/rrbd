@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="btn_Sart">ВВОД ДАННЫХ</string>
+    <string name="btn_Settings">ПОИСК</string>
+    <string name="btn_Exit">ВЫХОД</string>
+    <string name="hint_btn_Exit">Нажми чтобы выйти</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="newStrings">Заполнить</string>
+    <string name="showDB">Показать</string>
+    <string name="privet">Привет</string>
+</resources>
