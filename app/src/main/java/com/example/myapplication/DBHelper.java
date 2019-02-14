@@ -11,46 +11,52 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final String TAG = "SQLite";
 
     // Версия базы
-    private static final int DATABASE_VERSION = 1;
+    private static final int DB_VERSION = 1;
 
     // Название базы
-    private static final String DATABASE_NAME = "MY_DB.db";
+    private static final String DB_NAME = "MY_DB.db";
 
     // Таблица и ее столбцы
-    private static final String TABLE_MY = "MY_Table";
-    private static final String COLUMN_ID ="MY_Id";
-    private static final String COLUMN_TITLE ="MY_Title";
-    private static final String COLUMN_TEXT = "MY_Text";
+    private static final String DB_Table = "students";
+    private static final String C_ID ="ID";
+    private static final String C_first_name ="first_name";
+    private static final String C_last_name = "last_name";
+    private static final String C_group = "gr";
 
     public DBHelper(Context context){
         /* супер-инициализирует конструктор класса хелпера от которого мы наследуемся */
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context,DB_NAME,null,DB_VERSION);
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     // Создаем таблицы нашей базы
     public void onCreate(SQLiteDatabase db) {
-        String scriptDB ="CREATE TABLE "+TABLE_MY+"("+COLUMN_ID+" INTEGER PRIMARY_KEY "+COLUMN_TITLE+" TEXT "+COLUMN_TEXT+" TEXT "+")";
+        String scriptDB = "CREATE TABLE students (ID INTEGER AUTOINCREMENT ,first_name TEXT, last_name TEXT, gr TEXT)";
         db.execSQL(scriptDB);
     }
 
     @Override
     //если обновилась структура базы, уничтожаем ее и создаем заново
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MY);
+        db.execSQL("DROP TABLE IF EXISTS " + DB_Table);
         onCreate(db);
     }
-    //типа метод для заполним базу чуток
-    public void initMY_DB(){
+    //типа метод для заполнения
+    public boolean insertData(String first_name, String last_name, String gr){
         //открываем на запись
         SQLiteDatabase db = this.getWritableDatabase();
+        //создаем штуку для вставки
         ContentValues values=new ContentValues();
         //вставлям поля
-        values.put("MY_Title","Пример1");
-        values.put("MY_Text","Типа текст 1");
+        values.put(C_first_name,first_name);
+        values.put(C_last_name,last_name);
+        values.put(C_group,gr);
+
         //записываем таблицу
-        db.insert("MY_Table",null,values);
-        db.close();
+        long result = db.insert(DB_Table,null ,values);
+      if (result == -1) return false;
+          else
+              return true;
     }
 }
