@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -32,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     // Создаем таблицы нашей базы
     public void onCreate(SQLiteDatabase db) {
-        String scriptDB = "CREATE TABLE students (ID INTEGER AUTOINCREMENT ,first_name TEXT, last_name TEXT, gr TEXT)";
+        String scriptDB = "CREATE TABLE students (ID INTEGER,first_name TEXT, last_name TEXT, gr TEXT)";
         db.execSQL(scriptDB);
     }
 
@@ -58,5 +59,10 @@ public class DBHelper extends SQLiteOpenHelper{
       if (result == -1) return false;
           else
               return true;
+    }
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+DB_Table,null);
+        return res;
     }
 }
