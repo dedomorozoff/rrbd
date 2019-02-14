@@ -8,7 +8,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="newStrings">Заполнить</string>
-    <string name="showDB">Показать</string>
-    <string name="privet">Привет</string>
+    <string name="newStrings">Вставить</string>
+    <string name="showDB">Показать записи</string>
+    <string name="privet">Удалить запись</string>
+    <string name="edit_ID">ID</string>
+    <string name="edit_first_name">Имя</string>
+    <string name="edit_last_name">Фамилия</string>
+    <string name="edit_group">Группа</string>
+    <string name="btn_Next">Следующая запись</string>
 </resources>

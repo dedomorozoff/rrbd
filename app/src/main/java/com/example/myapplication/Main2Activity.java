@@ -14,37 +14,15 @@ import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+
     private DBHelper dbHelper;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         dbHelper = new DBHelper(this);
     }
 
@@ -53,24 +31,17 @@ public class Main2Activity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.navigation,menu);
         return true;
     }
-    public void btnStartClick(View view){
-    SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values=new ContentValues();
-        //вставлям поля
-        values.put("MY_Title","Пример1");
-        values.put("MY_Text","Типа текст 1");
-        //записываем таблицу
-        db.insert("MY_Table",null,values);
-        db.close();
+
+
+    public void btn_Next_Click(View view) {
     }
-    public void btnShowClick(View view){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor =db.query("MY_Table",null,null,null,null,null,null);
-        cursor.moveToFirst();
-        int nText = cursor.getColumnIndex("MY_Text");
-        mTextMessage.setText(cursor.getString(nText));
-        db.close();
 
+    public void btnInsertClick(View view) {
+    }
 
+    public void btn_Show_Click(View view) {
+    }
+
+    public void btn_Delete_Click(View view) {
     }
 }

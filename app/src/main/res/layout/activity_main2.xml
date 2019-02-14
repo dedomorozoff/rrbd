@@ -7,81 +7,88 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
-
     <LinearLayout
-        android:id="@+id/l1"
+        android:id="@+id/line1"
         android:layout_width="395dp"
         android:layout_height="624dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/edit_ID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home"
+            android:text="@string/edit_ID"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/edit_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home"
+            android:text="@string/edit_first_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/id_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home"
+            android:text="@string/edit_last_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/id_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home"
+            android:layout_marginBottom="16dp"
+            android:text="@string/edit_group"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_start"
+            android:id="@+id/btn_Next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="btnStartClick"
+            android:onClick="btn_Next_Click"
+            android:text="@string/btn_Next" />
+
+
+        <Button
+            android:id="@+id/button_Insert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnInsertClick"
             android:text="@string/newStrings" />
 
         <Button
-            android:id="@+id/button_Show"
+            android:id="@+id/btn_Show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="btnShowClick"
+            android:onClick="btn_Show_Click"
             android:text="@string/showDB" />
+
         <Button
+            android:id="@+id/btn_Delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/privet"/>
+            android:onClick="btn_Delete_Click"
+            android:text="@string/privet" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
