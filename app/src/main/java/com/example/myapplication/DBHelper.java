@@ -65,6 +65,11 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor res = db.rawQuery("select * from "+DB_Table,null);
         return res;
     }
+    public  boolean eraseData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DB_Table,null,null);
+        return true;
+    }
 
 
 }

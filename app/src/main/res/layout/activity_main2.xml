@@ -89,6 +89,12 @@
             android:layout_height="wrap_content"
             android:onClick="btn_Delete_Click"
             android:text="@string/privet" />
+        <Button
+            android:id="@+id/btn_Delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btn_Erase"
+            android:text="@string/EraseTble" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

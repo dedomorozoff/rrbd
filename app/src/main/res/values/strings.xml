@@ -20,4 +20,5 @@
     <string name="SaveOk">Запись сохранена</string>
     <string name="Error">Ошибка</string>
     <string name="NotFound">Ничего не найдено</string>
+    <string name="EraseTble">Очистить таблицу</string>
 </resources>

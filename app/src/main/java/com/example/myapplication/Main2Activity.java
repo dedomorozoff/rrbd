@@ -24,6 +24,7 @@ public class Main2Activity extends AppCompatActivity {
     EditText editID,editFirstName,editLastName,editGr;
     Button buttonInsert,buttonNext,buttonShow,buttonDelete;
     int numR;
+    Cursor res;
 
 
 
@@ -42,6 +43,8 @@ public class Main2Activity extends AppCompatActivity {
         buttonDelete=(Button) findViewById(R.id.btn_Delete);
         buttonInsert=(Button) findViewById(R.id.btn_Insert);
 
+
+
     }
 
     @Override
@@ -52,14 +55,12 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void btn_Next_Click(View view) {
-
         Cursor res=mydb.getAllData();
         if(res.getCount() == 0) {
             showMessage(getString(R.string.Error),getString(R.string.NotFound));
             return;
-          }
+        }
          res.moveToNext();
-         numR=res.
          editID.setText(res.getString(0));
          editFirstName.setText(res.getString(1));
          editLastName.setText(res.getString(2));
@@ -104,5 +105,9 @@ public class Main2Activity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
+    }
+
+    public void btn_Erase(View view) {
+    mydb.eraseData();
     }
 }
