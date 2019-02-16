@@ -11,13 +11,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Main2Activity extends AppCompatActivity {
 
 
     private DBHelper mydb;
+    EditText editID,editFirstName,editLastName,editGr;
+    Button buttonInsert,buttonNext,buttonShow,buttonDelete;
+    int numR;
 
 
 
@@ -27,6 +33,15 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         mydb=new DBHelper(this);
         mydb.getWritableDatabase();
+        editID=(EditText) findViewById(R.id.edit_ID);
+        editFirstName=(EditText) findViewById(R.id.edit_first_name);
+        editLastName=(EditText) findViewById(R.id.edit_last_name);
+        editGr=(EditText) findViewById(R.id.edit_group);
+        buttonNext=(Button) findViewById(R.id.btn_Next);
+        buttonShow=(Button) findViewById(R.id.btn_Show);
+        buttonDelete=(Button) findViewById(R.id.btn_Delete);
+        buttonInsert=(Button) findViewById(R.id.btn_Insert);
+
     }
 
     @Override
@@ -37,10 +52,26 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void btn_Next_Click(View view) {
+
+        Cursor res=mydb.getAllData();
+        if(res.getCount() == 0) {
+            showMessage(getString(R.string.Error),getString(R.string.NotFound));
+            return;
+          }
+         res.moveToNext();
+         numR=res.
+         editID.setText(res.getString(0));
+         editFirstName.setText(res.getString(1));
+         editLastName.setText(res.getString(2));
+         editGr.setText(res.getString(3));
     }
 
     public void btnInsertClick(View view) {
-        mydb.insertData("Vasya","Pupkin","IS54");
+        boolean isInserted =mydb.insertData(editFirstName.getText().toString(),editLastName.getText().toString(),editGr.getText().toString());
+        if (isInserted == true)
+            Toast.makeText(this, getString(R.string.SaveOk), Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -48,7 +79,7 @@ public class Main2Activity extends AppCompatActivity {
         Cursor res=mydb.getAllData();
         if(res.getCount() == 0) {
             // show message
-            showMessage("Error","Nothing found");
+            showMessage(getString(R.string.Error),getString(R.string.NotFound));
             return;
         }
 
@@ -65,6 +96,7 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void btn_Delete_Click(View view) {
+
     }
     public void showMessage(String title,String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

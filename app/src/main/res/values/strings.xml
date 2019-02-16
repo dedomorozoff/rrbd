@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">ИС Студенты</string>
     <string name="btn_Sart">ВВОД ДАННЫХ</string>
     <string name="btn_Settings">ПОИСК</string>
     <string name="btn_Exit">ВЫХОД</string>
     <string name="hint_btn_Exit">Нажми чтобы выйти</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_home">Вставить</string>
+    <string name="title_dashboard">Найти</string>
     <string name="title_notifications">Notifications</string>
     <string name="newStrings">Вставить</string>
     <string name="showDB">Показать записи</string>
@@ -16,4 +16,8 @@
     <string name="edit_last_name">Фамилия</string>
     <string name="edit_group">Группа</string>
     <string name="btn_Next">Следующая запись</string>
+    <string name="ErrorSave">Ошибка сохранения</string>
+    <string name="SaveOk">Запись сохранена</string>
+    <string name="Error">Ошибка</string>
+    <string name="NotFound">Ничего не найдено</string>
 </resources>

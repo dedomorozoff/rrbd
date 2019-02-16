@@ -12,7 +12,7 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final String TAG = "SQLite";
 
     // Версия базы
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // Название базы
     private static final String DB_NAME = "MY_DB.db";
@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     // Создаем таблицы нашей базы
     public void onCreate(SQLiteDatabase db) {
-        String scriptDB = "CREATE TABLE students (ID INTEGER,first_name TEXT, last_name TEXT, gr TEXT)";
+        String scriptDB = "CREATE TABLE students (ID integer primary key autoincrement not null,first_name text, last_name text, gr text)";
         db.execSQL(scriptDB);
     }
 
@@ -65,4 +65,6 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor res = db.rawQuery("select * from "+DB_Table,null);
         return res;
     }
+
+
 }
