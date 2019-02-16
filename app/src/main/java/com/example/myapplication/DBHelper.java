@@ -68,7 +68,15 @@ public class DBHelper extends SQLiteOpenHelper{
     public  boolean eraseData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_Table,null,null);
+        db.execSQL("update sqlite_sequence set seq=0 WHERE Name='"+DB_Table+"'");
         return true;
+    }
+    public boolean deleteRow(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result =db.delete(DB_Table,C_ID+"="+id,null);
+        if (result == -1) return false;
+        else
+            return true;
     }
 
 

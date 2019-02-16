@@ -42,7 +42,8 @@ public class Main2Activity extends AppCompatActivity {
         buttonShow=(Button) findViewById(R.id.btn_Show);
         buttonDelete=(Button) findViewById(R.id.btn_Delete);
         buttonInsert=(Button) findViewById(R.id.btn_Insert);
-
+        res = mydb.getAllData();
+        res.moveToFirst();
 
 
     }
@@ -55,17 +56,27 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void btn_Next_Click(View view) {
-        Cursor res=mydb.getAllData();
-        if(res.getCount() == 0) {
+
+        if(res.getCount() == 0 || res==null){
+            // show message
             showMessage(getString(R.string.Error),getString(R.string.NotFound));
             return;
         }
-         res.moveToNext();
-         editID.setText(res.getString(0));
-         editFirstName.setText(res.getString(1));
-         editLastName.setText(res.getString(2));
-         editGr.setText(res.getString(3));
-    }
+        if (res.isLast()) {
+                res = mydb.getAllData();
+                res.moveToFirst();
+            }
+            else
+                res.moveToNext();
+
+            editID.setText(res.getString(0));
+            editFirstName.setText(res.getString(1));
+            editLastName.setText(res.getString(2));
+            editGr.setText(res.getString(3));
+
+        }
+
+
 
     public void btnInsertClick(View view) {
         boolean isInserted =mydb.insertData(editFirstName.getText().toString(),editLastName.getText().toString(),editGr.getText().toString());
@@ -73,6 +84,7 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.SaveOk), Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
+        res = mydb.getAllData();
 
     }
 
@@ -97,6 +109,13 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void btn_Delete_Click(View view) {
+        boolean isDeleted=mydb.deleteRow(res.getInt(0));
+        if (isDeleted == true)
+            Toast.makeText(this, getString(R.string.SaveOk), Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
+
+
 
     }
     public void showMessage(String title,String Message){
@@ -109,5 +128,6 @@ public class Main2Activity extends AppCompatActivity {
 
     public void btn_Erase(View view) {
     mydb.eraseData();
+    Cursor res=mydb.getAllData();
     }
 }
