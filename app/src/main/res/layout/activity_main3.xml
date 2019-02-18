@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main3Activity">
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/edit_Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+            android:text="@string/editSearch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints=""
+            android:inputType="" />
+
+
+        <Button
+            android:id="@+id/btn_Delete"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btn_Search_Click"
+            android:text="@string/btnSearch" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/r1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -21,4 +21,7 @@
     <string name="Error">Ошибка</string>
     <string name="NotFound">Ничего не найдено</string>
     <string name="EraseTble">Очистить таблицу</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="editSearch">Поиск</string>
+    <string name="btnSearch">Поиск по базе</string>
 </resources>

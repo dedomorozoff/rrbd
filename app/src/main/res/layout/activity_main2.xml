@@ -90,11 +90,17 @@
             android:onClick="btn_Delete_Click"
             android:text="@string/privet" />
         <Button
-            android:id="@+id/btn_Delete"
+            android:id="@+id/btn_Erase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="btn_Erase"
             android:text="@string/EraseTble" />
+        <Button
+            android:id="@+id/btn_Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btn_Search_Click1"
+            android:text="@string/btnSearch" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

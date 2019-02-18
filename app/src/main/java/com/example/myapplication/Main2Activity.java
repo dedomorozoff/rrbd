@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -129,5 +130,10 @@ public class Main2Activity extends AppCompatActivity {
     public void btn_Erase(View view) {
     mydb.eraseData();
     Cursor res=mydb.getAllData();
+    }
+
+    public void btn_Search_Click1(View view) {
+        Intent intent = new Intent(Main2Activity.this,Main3Activity.class);
+        startActivity(intent);
     }
 }
