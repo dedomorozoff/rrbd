@@ -60,23 +60,33 @@ public class DBHelper extends SQLiteOpenHelper{
           else
               return true;
     }
+    //возвращает всю таблицу
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+DB_Table,null);
         return res;
     }
+    //Очистить таблицу
     public  boolean eraseData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_Table,null,null);
         db.execSQL("update sqlite_sequence set seq=0 WHERE Name='"+DB_Table+"'");
         return true;
     }
+    //Метод для удаления строки
     public boolean deleteRow(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result =db.delete(DB_Table,C_ID+"="+id,null);
         if (result == -1) return false;
         else
             return true;
+    }
+    //Метод для поиска по весем полям
+    public Cursor searchData(String search){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+DB_Table+" where "+C_first_name+" like " +search+" or "+ C_last_name+" like "+search+" or "+C_group+" like "+search,null);
+        return res;
+
     }
 
 
