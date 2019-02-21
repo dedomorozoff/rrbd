@@ -84,7 +84,8 @@ public class DBHelper extends SQLiteOpenHelper{
     //Метод для поиска по весем полям
     public Cursor searchData(String search){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+DB_Table+" where "+C_first_name+" like " +search+" or "+ C_last_name+" like "+search+" or "+C_group+" like "+search,null);
+        Cursor res = db.rawQuery("select * from "+DB_Table,null);
+                //+" where "+C_first_name+" like '" +search+" or "+ C_last_name+" like "+search+" or "+C_group+" like "+search,null);
         return res;
 
     }

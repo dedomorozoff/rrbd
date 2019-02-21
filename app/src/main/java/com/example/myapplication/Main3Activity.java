@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 
 public class Main3Activity extends AppCompatActivity {
     DBHelper mydb;
@@ -18,8 +20,8 @@ public class Main3Activity extends AppCompatActivity {
     EditText editSearch;
     RecyclerView R1;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter mAdapter;
-    String[] myDataset;
+    MyRecyclerViewAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +30,23 @@ public class Main3Activity extends AppCompatActivity {
         mydb=new DBHelper(this);
         mydb.getWritableDatabase();
         editSearch = (EditText)findViewById(R.id.edit_Search);
-        R1 =(RecyclerView) findViewById(R.id.r1);
+
+        ArrayList<String> animalNames = new ArrayList<>();
+        animalNames.add("Horse");
+        animalNames.add("Cow");
+        animalNames.add("Camel");
+        animalNames.add("Sheep");
+        animalNames.add("Goat");
+        R1 = findViewById(R.id.r1);
+        R1.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter= new MyRecyclerViewAdapter(this, animalNames);
+        //mAdapter.setClickListener(this);
+        R1.setAdapter(mAdapter);
+
     }
 
     public void btn_Search_Click(View view) {
-        res=mydb.searchData(editSearch.getText().toString());
-        layoutManager=new LinearLayoutManager(this);
-        R1.setLayoutManager(layoutManager);
-        myDataset=new String[] {"dsdf","sdfsd","erwe"};
-        mAdapter = new MyAdapter(myDataset);
-        R1.setAdapter(mAdapter);
+
 
 
 
