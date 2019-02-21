@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,6 +17,10 @@ public class Main3Activity extends AppCompatActivity {
     Cursor res;
     EditText editSearch;
     RecyclerView R1;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter mAdapter;
+    String[] myDataset;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,13 @@ public class Main3Activity extends AppCompatActivity {
 
     public void btn_Search_Click(View view) {
         res=mydb.searchData(editSearch.getText().toString());
+        layoutManager=new LinearLayoutManager(this);
+        R1.setLayoutManager(layoutManager);
+        myDataset=new String[] {"dsdf","sdfsd","erwe"};
+        mAdapter = new MyAdapter(myDataset);
+        R1.setAdapter(mAdapter);
+
+
 
 
     }

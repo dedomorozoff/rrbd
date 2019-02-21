@@ -117,7 +117,7 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
 
 
-Cursor
+
     }
     public void showMessage(String title,String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
