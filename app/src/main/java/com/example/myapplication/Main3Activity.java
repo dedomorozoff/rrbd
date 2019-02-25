@@ -2,19 +2,14 @@ package com.example.myapplication;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class Main3Activity extends AppCompatActivity {
@@ -22,7 +17,7 @@ public class Main3Activity extends AppCompatActivity {
     Cursor res;
     EditText editSearch;
     RecyclerView R1;
-    RecyclerView.LayoutManager layoutManager;
+//    RecyclerView.LayoutManager layoutManager;
     Adapter mAdapter;
     MyDataModel mydata;
     ArrayList<MyDataModel> AllData;
@@ -37,6 +32,10 @@ public class Main3Activity extends AppCompatActivity {
         mydata= new MyDataModel("ID","Имя","Фамилия","Группа");
         AllData = new ArrayList<>();
         AllData.add(mydata);
+        Cursor res =mydb.getAllData();
+        while (res.moveToNext()) {
+            AllData.add(new MyDataModel(res.getString(0), res.getString(1), res.getString(2), res.getString(3)));
+        }
         R1 = findViewById(R.id.r1);
         R1.setLayoutManager(new LinearLayoutManager(this));
         mAdapter= new Adapter(this, AllData);
@@ -53,7 +52,9 @@ public class Main3Activity extends AppCompatActivity {
             return;
         }
         while (res.moveToNext()) {
-          //mydata1 = res.getString(0);
+            AllData.clear();
+            AllData.add(mydata);
+            AllData.add(new MyDataModel(res.getString(0),res.getString(1),res.getString(2),res.getString(3)));
         }
 
 

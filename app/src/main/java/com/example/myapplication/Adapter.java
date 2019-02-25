@@ -25,9 +25,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
         MyDataModel data;
-        data=mData.get(0);
-        String t1 =data.getId();
-        myViewHolder.R_ID.setText(t1);
+        data=mData.get(i);
+        myViewHolder.R_ID.setText(data.getId());
+        myViewHolder.R_Firstname.setText(data.getFirstname());
+        myViewHolder.R_Lastname.setText(data.getLastname());
+        myViewHolder.R_Group.setText(data.getGr());
 
     }
 

@@ -32,6 +32,6 @@ public class MyDataModel {
         return lastname;
     }
     public int size(){
-        return 28;
+        return 1;
     }
 }

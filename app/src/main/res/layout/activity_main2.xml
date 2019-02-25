@@ -11,8 +11,16 @@
         android:layout_margin="6dp"
         android:orientation="vertical"
         >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <EditText
+
+            <EditText
             android:id="@+id/edit_ID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,4 +97,6 @@
             android:layout_height="wrap_content"
             android:onClick="btn_Search_Click1"
             android:text="@string/btnSearch" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
