@@ -10,8 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class Main3Activity extends AppCompatActivity {
@@ -20,8 +23,9 @@ public class Main3Activity extends AppCompatActivity {
     EditText editSearch;
     RecyclerView R1;
     RecyclerView.LayoutManager layoutManager;
-    MyRecyclerViewAdapter mAdapter;
-
+    Adapter mAdapter;
+    MyDataModel mydata;
+    ArrayList<MyDataModel> AllData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +34,27 @@ public class Main3Activity extends AppCompatActivity {
         mydb=new DBHelper(this);
         mydb.getWritableDatabase();
         editSearch = (EditText)findViewById(R.id.edit_Search);
-
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
+        mydata= new MyDataModel("ID","Имя","Фамилия","Группа");
+        AllData = new ArrayList<>();
+        AllData.add(mydata);
         R1 = findViewById(R.id.r1);
         R1.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter= new MyRecyclerViewAdapter(this, animalNames);
-        //mAdapter.setClickListener(this);
+        mAdapter= new Adapter(this, AllData);
         R1.setAdapter(mAdapter);
 
     }
 
     public void btn_Search_Click(View view) {
 
-
+        Cursor res=mydb.searchData(editSearch.getText().toString());
+        if(res.getCount() == 0) {
+            // show message
+            Toast.makeText(this, R.string.NotFound, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        while (res.moveToNext()) {
+          //mydata1 = res.getString(0);
+        }
 
 
 
