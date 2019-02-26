@@ -1,20 +1,14 @@
 package com.example.myapplication;
 
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -24,7 +18,6 @@ public class Main2Activity extends AppCompatActivity {
     private DBHelper mydb;
     EditText editID,editFirstName,editLastName,editGr;
     Button buttonInsert,buttonNext,buttonShow,buttonDelete;
-    int numR;
     Cursor res;
 
 
@@ -35,27 +28,27 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         mydb=new DBHelper(this);
         mydb.getWritableDatabase();
-        editID=(EditText) findViewById(R.id.edit_ID);
-        editFirstName=(EditText) findViewById(R.id.edit_first_name);
-        editLastName=(EditText) findViewById(R.id.edit_last_name);
-        editGr=(EditText) findViewById(R.id.edit_group);
-        buttonNext=(Button) findViewById(R.id.btn_Next);
-        buttonShow=(Button) findViewById(R.id.btn_Show);
-        buttonDelete=(Button) findViewById(R.id.btn_Delete);
-        buttonInsert=(Button) findViewById(R.id.btn_Insert);
+        editID= findViewById(R.id.edit_ID);
+        editFirstName= findViewById(R.id.edit_first_name);
+        editLastName= findViewById(R.id.edit_last_name);
+        editGr= findViewById(R.id.edit_group);
+        buttonNext= findViewById(R.id.btn_Next);
+        buttonShow= findViewById(R.id.btn_Show);
+        buttonDelete= findViewById(R.id.btn_Delete);
+        buttonInsert= findViewById(R.id.btn_Insert);
         res = mydb.getAllData();
         res.moveToFirst();
 
 
     }
-
+//Создаем общее меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation,menu);
         return true;
     }
 
-
+//Перемещение по записям, если запись последняя, то подгружаем данные и перемещаемся на первую
     public void btn_Next_Click(View view) {
 
         if(res.getCount() == 0 || res==null){
@@ -69,7 +62,7 @@ public class Main2Activity extends AppCompatActivity {
             }
             else
                 res.moveToNext();
-
+//Вставляем данные записи в текстовые поля на активности
             editID.setText(res.getString(0));
             editFirstName.setText(res.getString(1));
             editLastName.setText(res.getString(2));
@@ -77,18 +70,18 @@ public class Main2Activity extends AppCompatActivity {
 
         }
 
-
+//Вставка новой записи
 
     public void btnInsertClick(View view) {
         boolean isInserted =mydb.insertData(editFirstName.getText().toString(),editLastName.getText().toString(),editGr.getText().toString());
-        if (isInserted == true)
+        if (isInserted)
             Toast.makeText(this, getString(R.string.SaveOk), Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
         res = mydb.getAllData();
 
     }
-
+//Показываем все записи с помощью всплывающего сообщения, функция реализующая сообщения ниже
     public void btn_Show_Click(View view) {
         Cursor res=mydb.getAllData();
         if(res.getCount() == 0) {
@@ -97,21 +90,21 @@ public class Main2Activity extends AppCompatActivity {
             return;
         }
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         while (res.moveToNext()) {
-            buffer.append("ИД :"+ res.getString(0)+"\n");
-            buffer.append("Имя :"+ res.getString(1)+"\n");
-            buffer.append("Фамилия :"+ res.getString(2)+"\n");
-            buffer.append("Группа :"+ res.getString(3)+"\n\n");
+            buffer.append("ИД :").append(res.getString(0)).append("\n");
+            buffer.append("Имя :").append(res.getString(1)).append("\n");
+            buffer.append("Фамилия :").append(res.getString(2)).append("\n");
+            buffer.append("Группа :").append(res.getString(3)).append("\n\n");
         }
 
         // Show all data
         showMessage("Data",buffer.toString());
     }
-
+//Кнопка удалить запись
     public void btn_Delete_Click(View view) {
         boolean isDeleted=mydb.deleteRow(res.getInt(0));
-        if (isDeleted == true)
+        if (isDeleted)
             Toast.makeText(this, getString(R.string.SaveOk), Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this, getString(R.string.ErrorSave), Toast.LENGTH_SHORT).show();
@@ -119,6 +112,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
     }
+//Реализация всплывающего сообщения
     public void showMessage(String title,String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -129,9 +123,8 @@ public class Main2Activity extends AppCompatActivity {
 
     public void btn_Erase(View view) {
     mydb.eraseData();
-    Cursor res=mydb.getAllData();
     }
-
+//Кнопка поиск открывает активность с фукциями поиска
     public void btn_Search_Click1(View view) {
         Intent intent = new Intent(Main2Activity.this,Main3Activity.class);
         startActivity(intent);

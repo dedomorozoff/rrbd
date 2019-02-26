@@ -2,8 +2,9 @@ package com.example.myapplication;
 
 public class MyDataModel {
 
+//Реализация модели наших данных для использования в дальнейшем
 
-    String firstname,lastname,gr,id;
+    private String firstname,lastname,gr,id;
 
     public MyDataModel(){
 
@@ -31,7 +32,5 @@ public class MyDataModel {
     public String getLastname() {
         return lastname;
     }
-    public int size(){
-        return 1;
-    }
+
 }

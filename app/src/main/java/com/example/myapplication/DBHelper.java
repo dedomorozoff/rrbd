@@ -27,7 +27,6 @@ public class DBHelper extends SQLiteOpenHelper{
     public DBHelper(Context context){
         /* супер-инициализирует конструктор класса хелпера от которого мы наследуемся */
         super(context,DB_NAME,null,DB_VERSION);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -91,7 +90,12 @@ public class DBHelper extends SQLiteOpenHelper{
          else
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            res = db.rawQuery("select * from "+DB_Table+" where "+C_first_name+" like \'" +search+"\' or "+ C_last_name+" like \'"+search+"\' or "+C_group+" like \'"+search+"\'",null);
+            //типа условие поиска
+            String selection=C_first_name+" like ? or "+C_last_name+" like ?";
+            //типа что ищем
+            String[] selectionArgs ={"%"+search+"%","%"+search+"%"};
+            //Ищем методом query
+            res = db.query(DB_Table,null,selection,selectionArgs,null,null,null,null);
         }
 
 
