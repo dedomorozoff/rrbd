@@ -8,21 +8,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Пример адаптера для ReciclerView
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
+    //наш массив с данными
     private ArrayList<MyDataModel> mData;
 
-
+//инициализация классса
     public Adapter(Main3Activity main3Activity, ArrayList<MyDataModel> data) {
         this.mData =data;
     }
 
     @Override
+    //устанавливаем внешний вид из layout xml файла
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         return new MyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_row, viewGroup, false));
     }
 
     @Override
+    //указываем, что происходит при загрузке данных
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
         MyDataModel data;
         data=mData.get(i);
@@ -34,10 +37,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
     }
 
     @Override
+    //указываем размер массива отображаемых данных
     public int getItemCount() {
         return mData.size();
     }
-
+//назначаем ViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView R_ID,R_Firstname,R_Lastname,R_Group;
