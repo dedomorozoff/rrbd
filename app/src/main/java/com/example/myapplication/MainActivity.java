@@ -1,18 +1,13 @@
 package com.example.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnStart;
-    private Button btnSettings;
-    private Button btnExit;
 
     private View.OnClickListener btnStartListener =new View.OnClickListener() {
         @Override
@@ -24,9 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btnSettingsListener =new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast toast= (Toast) Toast.makeText(getApplicationContext(),"тут скоро будут настройки",Toast.LENGTH_SHORT);
-            toast.show();
-
+        Intent intent=new Intent(MainActivity.this,Main3Activity.class);
+        startActivity(intent);
         }
     };
     private View.OnClickListener btnExitListener =new View.OnClickListener() {
@@ -40,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnStart=findViewById(R.id.btn1);
-        btnSettings=findViewById(R.id.btn2);
-        btnExit=findViewById(R.id.btn3);
+        Button btnStart = findViewById(R.id.btn1);
+        Button btnSettings = findViewById(R.id.btn2);
+        Button btnExit = findViewById(R.id.btn3);
         btnStart.setOnClickListener(btnStartListener);
         btnSettings.setOnClickListener(btnSettingsListener);
         btnExit.setOnClickListener(btnExitListener);
