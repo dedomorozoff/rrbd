@@ -20,42 +20,44 @@
                 android:orientation="vertical">
 
 
-            <EditText
-            android:id="@+id/edit_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/edit_ID"
-            />
+                <EditText
+                    android:id="@+id/edit_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:inputType="number"
+                    android:hint="@string/edit_ID"
+                    android:maxLines="1"/>
 
-        <EditText
-            android:id="@+id/edit_first_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/edit_first_name"
-            />
+                <EditText
+                    android:id="@+id/edit_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:inputType="textPersonName"
+                    android:hint="@string/edit_first_name"
+                    android:maxLines="1"
+                    />
 
-        <EditText
-            android:id="@+id/edit_last_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/edit_last_name"
-            />
+                <EditText
+                    android:id="@+id/edit_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:inputType="textPersonName"
+                    android:hint="@string/edit_last_name"
+                    android:maxLines="1"
+                    />
 
-        <EditText
-            android:id="@+id/edit_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="16dp"
-            android:text="@string/edit_group"
-            />
+                <EditText
+                    android:id="@+id/edit_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:inputType="text"
+                    android:hint="@string/edit_group"
+                    android:maxLines="1"
+                    />
 
         <Button
             android:id="@+id/btn_Next"
