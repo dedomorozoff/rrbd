@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,8 +50,27 @@ public class Main2Activity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.navigation,menu);
         return true;
     }
+//Обработка нажатия меню
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.navigation_clear:
+                btn_Erase(null);
+                return true;
+            case R.id.navigation_find:
+                btn_Search_Click1(null);
+                return true;
+            case R.id.navigation_exit:
+                //Закрыть приложение(работает с API 16)
+                finishAffinity();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-//Перемещение по записям, если запись последняя, то подгружаем данные и перемещаемся на первую
+    //Перемещение по записям, если запись последняя, то подгружаем данные и перемещаемся на первую
     public void btn_Next_Click(View view) {
 
         if(res.getCount() == 0 || res==null){
